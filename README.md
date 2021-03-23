@@ -1,5 +1,8 @@
 # bloodsystemadmin2
 
+
+## 仿Vue-admin-template 项目完成，感谢花裤衩大哥和创业哥 respect!
+
 ## Project setup
 ```
 npm install
