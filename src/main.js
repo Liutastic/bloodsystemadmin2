@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 
 import 'normalize.css/normalize.css'
-import ElementUI from 'element-ui'
+// import ElementUI from 'element-ui'
+import './plugins/elementui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss' // global css
 import '@/icons' // icon
@@ -17,7 +18,7 @@ Vue.config.productionTip = false
 Vue.prototype.$request = request
 // Vue.prototype.$apis = apis
 
-Vue.use(ElementUI)
+// Vue.use(ElementUI)
 new Vue({
   router,
   store,

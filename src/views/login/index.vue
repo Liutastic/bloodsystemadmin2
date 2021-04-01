@@ -127,14 +127,26 @@ export default {
         data
       })
     },
+    setItem (token, phone, avatar, username) {
+      window.localStorage.setItem('token', token)
+      window.localStorage.setItem('phone', phone)
+      window.localStorage.setItem('avatar', avatar)
+      window.localStorage.setItem('username', username)
+    },
     async handleLogin () {
       this.$refs.loginForm.validate(async valid => {
         if (valid) {
           this.loading = true
           try {
-            const { data } = await this.login(this.loginForm)
-            console.log(data)
+            const { code, data: { token, phone, avatar, username } } = await this.login(this.loginForm)
+            // console.log(data)
+            if (code === 200) {
+              this.setItem(token, phone, avatar, username)
+            }
+            this.$router.push('/')
+            this.loading = false
           } catch (err) {
+            this.loading = false
             console.log(err)
           }
         }

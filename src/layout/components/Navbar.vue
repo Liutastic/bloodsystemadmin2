@@ -11,7 +11,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <img :src="avatar" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -37,18 +37,50 @@ export default {
     Breadcrumb,
     Hamburger
   },
+  data () {
+    return {
+      avatar: '',
+      username: ''
+    }
+  },
   computed: {
     ...mapGetters([
-      'sidebar',
-      'avatar'
+      'sidebar'
     ])
+  },
+  mounted () {
+    this.initUserInfo()
+    console.log('router', this.$route)
+    this.showNotification()
   },
   methods: {
     toggleSideBar () {
       this.$store.dispatch('app/toggleSideBar')
     },
-    async logout () {
-      await this.$store.dispatch('user/logout')
+    initUserInfo () {
+      this.avatar = window.localStorage.getItem('avatar')
+      this.username = window.localStorage.getItem('username')
+    },
+    removeUserInfo () {
+      window.localStorage.removeItem('token')
+      window.localStorage.removeItem('avatar')
+      window.localStorage.removeItem('username')
+      window.localStorage.removeItem('phone')
+    },
+    // 显示登录提示
+    showNotification () {
+      const redirect = this.$route.redirectedFrom
+      if (redirect === '/') {
+        this.$notify({
+          title: '登录成功',
+          message: `欢迎${this.username}用户`,
+          type: 'success',
+          duration: 3000
+        })
+      }
+    },
+    logout () {
+      this.removeUserInfo()
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }

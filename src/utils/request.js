@@ -17,10 +17,11 @@ service.interceptors.request.use(
 // 响应拦截
 service.interceptors.response.use(response => {
   const res = response.data
+  // console.log('axios res', res)
   if (res.code !== 200) {
     Message({
-      message: res.msg || 'Err',
-      type: 'error',
+      message: res.msg || 'Success',
+      type: 'success',
       duration: 5 * 1000
     })
   }

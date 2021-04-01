@@ -8,13 +8,14 @@
     "lint": "eslint --ext .js,.vue src --fix"
   },
   "dependencies": {
+    "axios": "0.18.1",
+    "core-js": "^3.6.5",
+    "crypto-js": "^4.0.0",
+    "element-ui": "2.13.2",
+    "js-cookie": "^2.2.1",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
-    "axios": "0.18.1",
-    "core-js": "^3.6.5",
-    "element-ui": "2.13.2",
-    "js-cookie": "^2.2.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

@@ -26,7 +26,33 @@ export const constantRoutes = [
         path: 'dashboard',
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: 'Dashboard', icon: 'dashboard' }
+        meta: { title: 'Dashboard', icon: 'el-icon-view' }
+      }
+    ]
+  },
+  {
+    path: '/volunteer',
+    name: '志愿者管理',
+    component: Layout,
+    children: [
+      {
+        path: '/volunteer/table',
+        name: 'volunteer',
+        component: () => import('@/views/volunteer/index'),
+        meta: { title: '志愿者管理', icon: 'el-icon-user' }
+      }
+    ]
+  },
+  {
+    path: '/cbctest',
+    name: '血常规检验项管理',
+    component: Layout,
+    children: [
+      {
+        path: '/cbctest',
+        name: 'cbctest',
+        component: () => import('@/views/cbcTest/index'),
+        meta: { title: '血常规检验项管理', icon: 'el-icon-user' }
       }
     ]
   }
